@@ -1,0 +1,70 @@
+<!-- Project 1 requirements:
+1. Build Angular App that displays at least 20 objects in a pinterest style
+2. User should be able to add and delete the objects
+3. Page should be fully-styled
+4. User should be able to search posts by category -->
+
+<!DOCTYPE html>
+<html ng-app="pinterest">
+<head>
+	<title></title>
+	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.0-beta.19/angular.min.js"></script>
+    <script type="text/javascript" src="models/posts.js"></script>
+    <script type="text/javascript" src="controllers/angularController.js"></script>
+    <link rel="stylesheet" type="text/css" href="css/style.css">
+</head>
+
+<body ng-controller="pinController">
+
+<!-- Adding a new post! -->
+
+		<div>
+			<form ng-submit =" addPost(pics, goal, importance, time, category);">
+				<label>Picture</label>
+				<input type ="text" ng-model = "pics"><br>
+
+				<label>Goal of the Day</label>
+				<input type ="text" ng-model = "goal"><br>
+
+				<label>Importance</label>
+				<input type ="text" ng-model = "importance"><br>
+
+				<label>Time</label>
+				<input type ="text" ng-model = "time"><br>
+
+				<label>Category</label>
+				<input type ="text" ng-model = "category"><br>
+				
+				<input type = "submit" value="I'm inspired!">
+
+			</form>
+
+		</div>
+
+
+
+<!--- displaying the posts! -->
+
+<div ng-repeat="post in tracy">
+
+			
+		<img src="{{post.image_url}}">
+		<br>
+		Goal of the Day: {{post.goal}}
+		<br>
+		Importance: {{post.importance}}
+		<br>
+		time: {{post.time}} minutes
+		<br>
+		Category: {{post.category.join(', ')}}
+		<br>
+
+	<!-- deleting a post! -->
+
+<button ng-click="deletePost($index)"> Delete Post</button>
+</div>
+
+</body>
+			
+	
+</html>
