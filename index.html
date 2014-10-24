@@ -9,17 +9,26 @@
 <head>
 	<title></title>
 	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.0-beta.19/angular.min.js"></script>
+
+<!-- Firebase -->
+	<script src="https://cdn.firebase.com/js/client/1.0.21/firebase.js"></script>
+<!-- AngularFire -->
+  	<script src="https://cdn.firebase.com/libs/angularfire/0.8.2/angularfire.min.js"></script>
+
     <script type="text/javascript" src="models/posts.js"></script>
     <script type="text/javascript" src="controllers/angularController.js"></script>
     <link rel="stylesheet" type="text/css" href="css/style.css">
 </head>
 
-<body ng-controller="pinController">
+<body ng-controller="mailman1">
+
+<!-- Search box at the top! -->
+
 
 <!-- Adding a new post! -->
 
 		<div>
-			<form ng-submit =" addPost(pics, goal, importance, time, category);">
+			<form ng-submit ="addPost(pics, goal, importance, time, category);">
 				<label>Picture</label>
 				<input type ="text" ng-model = "pics"><br>
 
@@ -54,7 +63,7 @@
 		<br>
 		Importance: {{post.importance}}
 		<br>
-		time: {{post.time}} minutes
+		Time: {{post.time}} minutes
 		<br>
 		Category: {{post.category.join(', ')}}
 		<br>
