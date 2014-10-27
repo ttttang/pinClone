@@ -7,73 +7,124 @@
 <!DOCTYPE html>
 <html ng-app="pinterest">
 <head>
-	<title></title>
-	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.0-beta.19/angular.min.js"></script>
+	<meta charset="utf-8"> 
+	<meta name="viewport" content="width=device-width, initial-scale=1">
 
+	<title></title>
+<!-- for Angular -->
+	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.0-beta.19/angular.min.js"></script>
 <!-- Firebase -->
 	<script src="https://cdn.firebase.com/js/client/1.0.21/firebase.js"></script>
 <!-- AngularFire -->
   	<script src="https://cdn.firebase.com/libs/angularfire/0.8.2/angularfire.min.js"></script>
-
-    <script type="text/javascript" src="models/posts.js"></script>
+ <!-- for javascript -->
     <script type="text/javascript" src="controllers/angularController.js"></script>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+ <!-- for bootstrap CDN-->
+	<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+ <!-- link to CSS page -->
     <link rel="stylesheet" type="text/css" href="css/style.css">
 </head>
 
 <body ng-controller="mailman1">
 
-<!-- Search box at the top! -->
+<!-- navigation bar -->
+<nav class="navbar navbar-default" role="navigation" style="background:transparent">
+  <div class="container-fluid">
+    <!-- Brand and toggle get grouped for better mobile display -->
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="#">Mosaic of Me</a>
+    </div>
 
+    <!-- Collect the nav links, forms, and other content for toggling -->
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+      <div class="navbar-form navbar-right" role="search">
+        <div class="form-group">
+          <button class="btn btn-primary btn-lg add-button" style="background-color: transparent; padding:5px; color:gray; border-color:gray; font-size:14px" data-toggle="modal" data-target="#myModal">
+ Add a piece!
+</button>
+          <input type="text"  ng-model="postfilter" class="search"> Search
+    </div><!-- /.navbar-collapse -->
+  </div><!-- /.container-fluid -->
+</div>
+</nav>
+
+
+
+<!-- sorting the actual post -->
+<!-- Sort By: 
+		<a href="" ng-click="predicate='importance' ">Importance</a>
+		<a href="" ng-click="predicate='time' ">Time</a> -->
 
 <!-- Adding a new post! -->
+<!-- Button trigger modal -->
 
-		<div>
-			<form ng-submit ="addPost(pics, goal, importance, time, category);">
-				<label>Picture</label>
-				<input type ="text" ng-model = "pics"><br>
+<!-- Modal -->
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span>
+      </div>
+      <div class="modal-body" style="width:300px">
+        <form class="addbox" ng-submit ="addPost(pics, goal, time, category);">
+        <label>Picture Link</label>
+        <input type ="text" ng-model = "pics"><br>
 
-				<label>Goal of the Day</label>
-				<input type ="text" ng-model = "goal"><br>
+        <label>Goal of the Day</label>
+        <input type ="text" ng-model = "goal"><br>
 
-				<label>Importance</label>
-				<input type ="text" ng-model = "importance"><br>
+        <label>Time</label>
+        <input type ="text" ng-model = "time"><br>
 
-				<label>Time</label>
-				<input type ="text" ng-model = "time"><br>
+        <label>Category</label>
+        <input type ="text" ng-model = "category"><br>
+        
+        <input type = "submit" value="Submit">
 
-				<label>Category</label>
-				<input type ="text" ng-model = "category"><br>
-				
-				<input type = "submit" value="I'm inspired!">
+      </form>
+      </div>
+    		</div>
+  			</div>
+			</div>
 
-			</form>
-
-		</div>
-
-
+ <h4 class="quote" style="text-align:center; color:gray"> <em> A journey of a thousand miles begins with a single step. -Lao Tzu </em> </h4>  <br>  
 
 <!--- displaying the posts! -->
-
-<div ng-repeat="post in tracy">
-
-			
-		<img src="{{post.image_url}}">
+<div class="container ugh">
+<div class="row">
+<div class="item" ng-repeat="post in tracy | filter:postfilter">
+    <div class="well">	
+		<img class="imgsize" src="{{post.image_url}}">
 		<br>
-		Goal of the Day: {{post.goal}}
+		<strong>Goal of the Day:</strong> {{post.goal}}
 		<br>
-		Importance: {{post.importance}}
+		<strong>Time: </strong> {{post.time}} minutes
 		<br>
-		Time: {{post.time}} minutes
-		<br>
-		Category: {{post.category.join(', ')}}
+		<strong> Category: </strong> {{post.category.join(', ')}}
 		<br>
 
 	<!-- deleting a post! -->
 
-<button ng-click="deletePost($index)"> Delete Post</button>
+<button ng-click="deletePost(post)" style="margin-top:5px">Delete </button>
+</div>
+</div>
+</div>
 </div>
 
-</body>
-			
+
+<!-- jQuery library -->
+	
+<!-- Bootstrap JavaScript plugins -->
+	<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+
+</body>			
 	
 </html>

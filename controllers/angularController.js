@@ -3,7 +3,7 @@ var pinApp = angular.module("pinterest", ["firebase"]); //making firebase a depe
 
 // <!-- to display each post!-->
 
-pinApp.controller('mailman1', function($scope, $firebase){
+pinApp.controller('mailman1', function($scope, $firebase, $filter){
 	var postRef = new Firebase('https://pinclone.firebaseio.com/posts'); //connect my controller to the firebase data-storage//
 	var sync = $firebase(postRef); // create object out of firebase data
 	$scope.tracy=sync.$asArray(); //change firebase object into array
@@ -13,7 +13,7 @@ pinApp.controller('mailman1', function($scope, $firebase){
 
 $scope.addPost = function(x, y, z, a, b){
 			var bedit=b.split(" , ");
-
+			
 			$scope.tracy.$add({image_url:x, goal:y, importance:z, time:a, category:bedit});		
 			$scope.pics="";
 			$scope.goal="";
@@ -31,5 +31,6 @@ $scope.deletePost=function(postName){
 			$scope.tracy.$remove(postName);
 			}
 		}
+
 
 })

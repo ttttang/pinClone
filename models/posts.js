@@ -1,5 +1,5 @@
 {
-    "posts"[
+    "posts":[
         {
             "image_url": "img/career.JPG",
             "goal": "Take a step out of your comfort zone, and try something new!",
