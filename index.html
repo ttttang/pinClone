@@ -7,24 +7,23 @@
 <!DOCTYPE html>
 <html ng-app="pinterest">
 <head>
-	<meta charset="utf-8"> 
-	<meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta charset="utf-8"> 
+  <meta name="viewport" content="width=device-width, initial-scale=1">
 
-	<title></title>
+  <title></title>
 <!-- for Angular -->
-	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.0-beta.19/angular.min.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.0-beta.19/angular.min.js"></script>
 <!-- Firebase -->
-	<script src="https://cdn.firebase.com/js/client/1.0.21/firebase.js"></script>
+  <script src="https://cdn.firebase.com/js/client/1.0.21/firebase.js"></script>
 <!-- AngularFire -->
-  	<script src="https://cdn.firebase.com/libs/angularfire/0.8.2/angularfire.min.js"></script>
+    <script src="https://cdn.firebase.com/libs/angularfire/0.8.2/angularfire.min.js"></script>
  <!-- for javascript -->
-    <script type="text/javascript" src="controllers/angularController.js"></script>
-
+    <script type="text/javascript" src="angularController.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
  <!-- for bootstrap CDN-->
-	<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
  <!-- link to CSS page -->
-    <link rel="stylesheet" type="text/css" href="css/style.css">
+    <link rel="stylesheet" type="text/css" href="style.css">
 </head>
 
 <body ng-controller="mailman1">
@@ -40,28 +39,28 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a class="navbar-brand" href="#">Mosaic of Me</a>
+      <a class="navbar-brand" href="index.html">Mosaic of Me</a>
     </div>
 
     <!-- Collect the nav links, forms, and other content for toggling -->
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       <div class="navbar-form navbar-right" role="search">
         <div class="form-group">
-          <button class="btn btn-primary btn-lg add-button" style="background-color: transparent; padding:5px; color:gray; border-color:gray; font-size:14px" data-toggle="modal" data-target="#myModal">
- Add a piece!
-</button>
-          <input type="text"  ng-model="postfilter" class="search"> Search
-    </div><!-- /.navbar-collapse -->
-  </div><!-- /.container-fluid -->
-</div>
+          <button class="btn btn-primary btn-lg add-button" style="background-color: transparent; padding:5px; color:gray; border-color:gray; font-size:14px; margin-right:5px" data-toggle="modal" data-target="#myModal">
+          Add a step!
+        </button>
+          <input type="text"  ng-model="postfilter" class="search" placeholder="Search" ng-model="searchText"> 
+      </div><!-- /.navbar-collapse -->
+    </div><!-- /.container-fluid -->
+  </div>
 </nav>
 
 
 
 <!-- sorting the actual post -->
 <!-- Sort By: 
-		<a href="" ng-click="predicate='importance' ">Importance</a>
-		<a href="" ng-click="predicate='time' ">Time</a> -->
+    <a href="" ng-click="predicate='importance' ">Importance</a>
+    <a href="" ng-click="predicate='time' ">Time</a> -->
 
 <!-- Adding a new post! -->
 <!-- Button trigger modal -->
@@ -91,27 +90,30 @@
 
       </form>
       </div>
-    		</div>
-  			</div>
-			</div>
+      </div>
+      </div>
+      </div>
 
- <h4 class="quote" style="text-align:center; color:gray"> <em> A journey of a thousand miles begins with a single step. -Lao Tzu </em> </h4>  <br>  
+  <!-- the title -->
+
+ <h4 class="quote" style="text-align:center; color:gray"> <em> A journey of a thousand miles begins with a single step. -Lao Tzu </em> </h4>   
+ <h4 style="text-align:center; color:gray; font-weight:normal"> ...so where do you want to go? </h4> <br> <br>
 
 <!--- displaying the posts! -->
 <div class="container ugh">
 <div class="row">
 <div class="item" ng-repeat="post in tracy | filter:postfilter">
-    <div class="well">	
-		<img class="imgsize" src="{{post.image_url}}">
-		<br>
-		<strong>Goal of the Day:</strong> {{post.goal}}
-		<br>
-		<strong>Time: </strong> {{post.time}} minutes
-		<br>
-		<strong> Category: </strong> {{post.category.join(', ')}}
-		<br>
+    <div class="well">  
+    <img class="imgsize" src="{{post.image_url}}">
+    <br>
+    <strong>Goal of the Day:</strong> {{post.goal}}
+    <br>
+    <strong>Time: </strong> {{post.time}} minutes
+    <br>
+    <strong> Category: </strong> {{post.category.join(', ')}}
+    <br>
 
-	<!-- deleting a post! -->
+  <!-- deleting a post! -->
 
 <button ng-click="deletePost(post)" style="margin-top:5px">Delete </button>
 </div>
@@ -121,10 +123,10 @@
 
 
 <!-- jQuery library -->
-	
+  
 <!-- Bootstrap JavaScript plugins -->
-	<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+  <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
 
-</body>			
-	
+</body>     
+  
 </html>
